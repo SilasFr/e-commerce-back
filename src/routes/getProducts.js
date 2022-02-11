@@ -34,7 +34,6 @@ getProducts.get("/products/:category/:id", async (req, res) => {
     if (!product) {
       return res.sendStatus(404);
     }
-    console.log(product);
     res.send(product);
   } catch (e) {
     console.log(e);
