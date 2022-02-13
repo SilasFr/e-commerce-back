@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { getSingleProduct, Products } from "../controllers/navController.js";
-import db from "../db.js";
 
 const getProducts = Router();
 
