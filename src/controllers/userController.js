@@ -2,9 +2,8 @@ import bcrypt from "bcrypt";
 import db from "../db.js";
 
 export async function createUser(req, res) {
-  const user = req.body;
-
   try {
+    const user = req.body;
     const passwordHash = bcrypt.hashSync(user.password, 10);
 
     const user = await db
