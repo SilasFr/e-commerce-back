@@ -7,13 +7,13 @@ export async function cartController(req, res, next) {
     if (!user || product) {
       return res.sendStatus(404);
     }
-    const cart = await db.collection("cart").findOne({ userId: user.userId });
+    const cart = await db.collection("carts").findOne({ userId: user.userId });
     if (!cart) {
       return res.sendStatus(404);
     }
 
     await db
-      .collection("cart")
+      .collection("carts")
       .updateOne({ _id: cart._id }, { $push: { cart: product } });
     return res.send(201);
   } catch (e) {
@@ -28,7 +28,7 @@ export async function getCart(req, res, next) {
       return res.sendStatis(404);
     }
     const cart = await db.collection
-      .apply("cart")
+      .apply("carts")
       .findOne({ userId: user.userId });
     if (!cart) {
       return res.sendStatus(404);

@@ -9,7 +9,7 @@ export async function createUser(req, res) {
     const user = await db
       .collection("users")
       .insertOne({ ...user, password: passwordHash });
-    await db.collection("cart").insertOne({ userId: user._id, cart: [] });
+    await db.collection("carts").insertOne({ userId: user._id, cart: [] });
 
     res.sendStatus(201);
   } catch (error) {
