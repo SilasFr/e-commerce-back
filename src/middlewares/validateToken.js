@@ -4,8 +4,9 @@ export async function validateToken(req, res, next) {
   const authorization = req.headers.authorization;
   const token = authorization?.replace("Bearer ", "");
 
+  console.log("req:", req.headers);
+
   if (!token) {
-    console.log("aaa");
     res.sendStatus(401);
     return;
   }
@@ -13,7 +14,6 @@ export async function validateToken(req, res, next) {
   const session = await db.collection("sessions").findOne({ token });
 
   if (!session) {
-    console.log("bbb");
     res.sendStatus(401);
     return;
   }

@@ -4,7 +4,7 @@ import { validateToken } from "../middlewares/validateToken.js";
 
 const cartRouter = Router();
 
-cartRouter.post("/add-to-cart", validateToken, cartController);
+cartRouter.post("/banana", validateToken, cartController);
 
 cartRouter.get("/get-cart", validateToken, getCart);
 
