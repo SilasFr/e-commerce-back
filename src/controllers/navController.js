@@ -5,7 +5,6 @@ async function Products(req, res, next) {
     const Data = await db.collection("products").find().toArray();
     res.send(Data);
   } catch (e) {
-    console.log(e);
     res.sendStatus(500);
   }
 }
@@ -33,7 +32,6 @@ async function getSingleProduct(req, res) {
     }
     res.send(product);
   } catch (e) {
-    console.log(e);
     res.sendStatus(500);
   }
 }

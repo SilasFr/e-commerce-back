@@ -6,7 +6,6 @@ export async function createUser(req, res) {
     const user = req.body;
     const passwordHash = bcrypt.hashSync(user.password, 10);
 
-
     const { insertedId } = await db
       .collection("users")
       .insertOne({ ...user, password: passwordHash });
@@ -14,7 +13,6 @@ export async function createUser(req, res) {
 
     res.sendStatus(201);
   } catch (error) {
-    console.log(error);
     return res.sendStatus(500);
   }
 }
