@@ -36,6 +36,6 @@ export async function getCart(req, res, next) {
 
     res.send(cart);
   } catch (e) {
-    res.send(500);
+    res.sendStatus(500);
   }
 }
