@@ -4,6 +4,8 @@ export async function cartController(req, res, next) {
   try {
     const user = res.local.user;
     const product = req.body;
+    console.log("user:", user);
+    console.log("product:", product);
     if (!user || product) {
       return res.sendStatus(404);
     }
