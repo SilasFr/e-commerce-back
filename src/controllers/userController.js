@@ -1,13 +1,16 @@
-import bcrypt from 'bcrypt'
-import db from '../db.js'
+import bcrypt from "bcrypt";
+import db from "../db.js";
 
 export async function createUser(req, res) {
-  const user = req.body;
-
   try {
+    const user = req.body;
     const passwordHash = bcrypt.hashSync(user.password, 10);
 
-    await db.collection("users").insertOne({ ...user, password: passwordHash});
+
+    const { insertedId } = await db
+      .collection("users")
+      .insertOne({ ...user, password: passwordHash });
+    await db.collection("carts").insertOne({ userId: insertedId, cart: [] });
 
     res.sendStatus(201);
   } catch (error) {
