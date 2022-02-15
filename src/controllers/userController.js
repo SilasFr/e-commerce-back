@@ -6,6 +6,7 @@ export async function createUser(req, res) {
     const user = req.body;
     const passwordHash = bcrypt.hashSync(user.password, 10);
 
+
     const { insertedId } = await db
       .collection("users")
       .insertOne({ ...user, password: passwordHash });
